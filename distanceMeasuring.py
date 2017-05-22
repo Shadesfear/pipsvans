@@ -13,13 +13,21 @@ for x in subdirs:
 
 	#df = pd.read_csv('C:/Users/Morten/Documents/pipsvans/femfyrre/femfyrre_32.csv', header=None, skiprows=2, names=['time','A','B'])
 	#df = pd.read_csv('C:/Users/Morten/Documents/pipsvans/femfyrre/femfyrre_32.csv', header=None, skiprows=2, names=['time','A','B'])
-
+noise = []
+for x in subdirs:
+	#noise.append(max(df[x].A[1:500]))
+	if df[x].empty:
+		print(x)
+	else: 
+		print(max(df[x].A[1:10]))
+		
 
 #noiseA = max(df.A[1:500]) 
 #noiseB = max(df.B[1:500])
 
 #plt.plot(df.time,df.B)
 
+print(len(subdirs))
 #signalA = df.A[df.A > noiseA * 3]
 #signalB = df.B[df.B > noiseB * 4]
 #signalAStartt = df.time[signalAstart[0,1]] 
@@ -29,7 +37,7 @@ for x in subdirs:
 #signalBTimeStart = df.time[signalBStart]
 #travelTime = signalATimeStart - signalBTimeStart
 #print(subdirs)
-print(df['femfyrre'])
+
 
 #print(travelTime/1000*340)
 #print(signalBTimeStart)
