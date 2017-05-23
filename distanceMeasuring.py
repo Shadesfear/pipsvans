@@ -6,7 +6,7 @@ import os
 
 
 #liste over subdirs i pipsvans, men den returner også andre ting, så de skal sorteres fra
-names = [x[1] for x in os.walk('E:/Users/Chris/Documents/pipsvans')] 
+names = [x[1] for x in os.walk(os.getcwd())] 
 #Only the subdirs we want
 subdirs = names[0][1:]
 
@@ -15,7 +15,7 @@ df = dict.fromkeys(subdirs)
 
 #Reads all CSV files into the keyset.
 for x in subdirs:
-	df[x] = pd.read_csv('E:/Users/Chris/Documents/pipsvans/'+x+'/'+x+'_32.csv', header=None, skiprows=2, names=['time','A','B']) # mapper keyset til valueset
+	df[x] = pd.read_csv(os.getcwd()+'/'+x+'/'+x+'_32.csv', header=None, skiprows=2, names=['time','A','B']) # mapper keyset til valueset
 
 
 maxes = []
