@@ -6,9 +6,9 @@ import os
 
 
 #liste over subdirs i pipsvans, men den returner også andre ting, så de skal sorteres fra
-names = [x[1] for x in os.walk(os.getcwd())] 
+names = [x[1] for x in os.walk(os.getcwd())] # <-- This is not needed anymore! But im gonna keep it
 #Only the subdirs we want
-subdirs = names[0][1:]
+subdirs = [x[1] for x in os.walk(os.getcwd())][0][1:]
 
 # laver et dictionary med keysets fra listen af strings 'subdirs'
 df = dict.fromkeys(subdirs) 
