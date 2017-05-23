@@ -35,5 +35,3 @@ for x in subdirs:
 	if j.dtype == object:
 		pass#print('j.dtype')	
 	print(j.dtype)
-
-
