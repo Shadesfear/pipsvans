@@ -29,6 +29,7 @@ noise = float(max(np.asarray(maxes)))
 		
 signalA = df['tyve'].A[df['tyve'].A > noise*2]
 
+#This is where we get the error with data types, we get both objects and float64
 for x in subdirs:
 	j = df[x].A.values
 	if j.dtype == object:
