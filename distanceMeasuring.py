@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 import xlrd
 import os
 
-names = [x[1] for x in os.walk('C:/Users/Morten/Documents/pipsvans')] #liste over subdirs i pipsvans, men den returner også andre ting, så de skal sorteres fra
+names = [x[1] for x in os.walk(os.getcwd())] #liste over subdirs i pipsvans, men den returner også andre ting, så de skal sorteres fra
 subdirs = names[0][1:]
 df = dict.fromkeys(subdirs) # laver et dictionary med keysets fra listen af strings 'subdirs'
 for x in subdirs:
-	df[x] = pd.read_csv('C:/Users/Morten/Documents/pipsvans/'+x+'/'+x+'_32.csv', header=None, skiprows=2, names=['time','A','B']) # mapper keyset til valueset
+	df[x] = pd.read_csv(os.getcwd()+'/'+x+'/'+x+'_32.csv', header=None, skiprows=2, names=['time','A','B']) # mapper keyset til valueset
 maxes = []
 for x in subdirs:
 	if df[x].empty:
