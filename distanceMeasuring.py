@@ -4,11 +4,20 @@ import matplotlib.pyplot as plt
 import xlrd
 import os
 
-names = [x[1] for x in os.walk('C:/Users/Morten/Documents/pipsvans')] #liste over subdirs i pipsvans, men den returner også andre ting, så de skal sorteres fra
+
+#liste over subdirs i pipsvans, men den returner også andre ting, så de skal sorteres fra
+names = [x[1] for x in os.walk('E:/Users/Chris/Documents/pipsvans')] 
+#Only the subdirs we want
 subdirs = names[0][1:]
-df = dict.fromkeys(subdirs) # laver et dictionary med keysets fra listen af strings 'subdirs'
+
+# laver et dictionary med keysets fra listen af strings 'subdirs'
+df = dict.fromkeys(subdirs) 
+
+#Reads all CSV files into the keyset.
 for x in subdirs:
-	df[x] = pd.read_csv('C:/Users/Morten/Documents/pipsvans/'+x+'/'+x+'_32.csv', header=None, skiprows=2, names=['time','A','B']) # mapper keyset til valueset
+	df[x] = pd.read_csv('E:/Users/Chris/Documents/pipsvans/'+x+'/'+x+'_32.csv', header=None, skiprows=2, names=['time','A','B']) # mapper keyset til valueset
+
+
 maxes = []
 for x in subdirs:
 	if df[x].empty:
@@ -23,9 +32,7 @@ signalA = df['tyve'].A[df['tyve'].A > noise*2]
 for x in subdirs:
 	j = df[x].A.values
 	if j.dtype == object:
-		j=np.array(j, dtype=float)	
+		pass#print('j.dtype')	
 	print(j.dtype)
-	j2 = [i for i in j if i > 2.4]
 
-print(j2)
 
